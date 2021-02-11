@@ -51,7 +51,7 @@ const fetchCoordsByIP = function(ip, callback) {
  *   - The fly over times as an array of objects (null if error). Example:
  *     [ { risetime: 134564234, duration: 600 }, ... ]
  */
-const fetchISSFlyOverTimes = function (coords, callback) {
+const fetchISSFlyOverTimes = function(coords, callback) {
   const apiCall = `http://api.open-notify.org/iss-pass.json?lat=${coords.latitude}&lon=${coords.longitude}`;
   request(apiCall, (error, response, body) => {
     if (error) {
@@ -78,7 +78,7 @@ const fetchISSFlyOverTimes = function (coords, callback) {
  *   - The fly-over times as an array (null if error):
  *     [ { risetime: <number>, duration: <number> }, ... ]
  */
-const nextISSTimesForMyLocation = function (callback) {
+const nextISSTimesForMyLocation = function(callback) {
   fetchMyIP((error, ip) => {
     if (error) {
       console.log("It didn't work!", error);
@@ -95,7 +95,7 @@ const nextISSTimesForMyLocation = function (callback) {
         `It worked!: latitude: ${location.latitude} and long ${location.longitude}`
       );
 
-      fetchISSFlyOverTimes(location, function (error, nextPasses) {
+      fetchISSFlyOverTimes(location, function(error, nextPasses) {
         if (error) {
           console.log("It didn't work!", error);
           return callback(true, null);
